@@ -1,28 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../src/style.css" />
     <title>Pure React App</title>
-</head>
-<body>
-    <div id="root">Not Rendered</div>
+  </head>
+  <body>
+    <div style="display: flex">
+      <div id="root" style="width: 50%; display: flex">Not Rendered</div>
+      <div
+        style="
+          width: 50%;
+          background-color: rgb(253, 139, 1);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <input type="text" id="normal-text" />
+        <script>
+          const input = document.getElementById("normal-text");
+          input.addEventListener("input", function (e) {
+            console.log(e.target.value);
+          });
+        </script>
+      </div>
+    </div>
+
     <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
     <script>
+      const App = () => {
+        return React.createElement(
+          "div",
+          {},
+          React.createElement("h1", {}, "My React App")
+        );
+      };
 
-        const App = ()=>{
-            return React.createElement(
-                "div",
-                {},
-                React.createElement("h1",{},"My React App")                
-            );
-        };
-
-        const container = document.getElementById("root");
-        const root = ReactDOM.createRoot(container);
-        root.render(React.createElement(App));
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(React.createElement(App));
     </script>
-</body>
+  </body>
 </html>
