@@ -14,15 +14,21 @@
           width: 50%;
           background-color: rgb(253, 139, 1);
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
         "
       >
         <input type="text" id="normal-text" />
+        <div>
+          <p id="sample text"></p>
+        </div>
         <script>
           const input = document.getElementById("normal-text");
+          const sampleText = document.getElementById("sample text");
           input.addEventListener("input", function (e) {
             console.log(e.target.value);
+            sampleText.innerHTML = e.target.value;
           });
         </script>
       </div>
