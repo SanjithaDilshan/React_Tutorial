@@ -4,7 +4,17 @@ import SearchBar from "./components/SearchBar";
 import "./App.css";
 
 function App() {
-  const [text, setText] = useState(10);
+  const [text, setText] = useState("");
+
+  const studentList = [
+    { name: "Amal", age: 20, town: "Gampaha" },
+    { name: "Kamal", age: 25, town: "Colombo" },
+    { name: "Nimal", age: 18, town: "Negombo" },
+  ];
+
+  const searchedStudent = studentList.filter((student) =>
+    student.name.toLowerCase().includes(text.toLowerCase())
+  );
 
   const searchChange = (event) => {
     console.log(event.target.value);
@@ -20,9 +30,17 @@ function App() {
         <p id="sample text">{text}</p>
         <p id="sample text-2"></p>
       </div>
-      <StudentCard name="Amal" age={20} homeTown="Gampaha" />
-      <StudentCard name="Kamal" age={25} homeTown="Colombo" />
-      <StudentCard name="Nimal" age={18} homeTown="Negombo" />
+
+      {searchedStudent.map((student, index) => {
+        return (
+          <StudentCard
+            key={index}
+            name={student.name}
+            age={student.age}
+            homeTown={student.town}
+          />
+        );
+      })}
     </div>
   );
 }
