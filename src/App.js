@@ -24,7 +24,7 @@ function App() {
   return (
     <div>
       <h1>My React App</h1>
-      <SearchBar onSearch={searchChange} />
+      <SearchBar onSearch={searchChange} searchText={text} />
 
       <div>
         <p id="sample text">{text}</p>
